@@ -1,0 +1,33 @@
+name: Report a problem / 报告问题
+description: Tell us what happened with a small, reproducible example.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please use invented or redacted examples. Do not attach private conversations, documents, or account exports.
+        请使用虚构或脱敏样例，不要上传私人聊天、文档或账户导出包。
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps and expected result / 操作与预期
+      description: Which buttons or inputs did you use, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened / 实际结果
+      description: Include the displayed message or a screenshot without private content.
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device / 浏览器与设备
+      placeholder: Chrome 140 on Windows 11
+  - type: textarea
+    id: sample
+    attributes:
+      label: Optional small sample / 可选的最小样例
+      description: An invented sample that triggers the same problem is most useful.

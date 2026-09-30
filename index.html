@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="在浏览器里把 PDF 和文字整理成带来源的 AI 材料包。无需注册，无需 API Key，文档不上传。" />
+  <meta name="referrer" content="no-referrer" />
+  <title>文档备料台 · Doc to Context</title>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar"><a class="brand" href="./" aria-label="文档备料台首页"><span class="brand-icon" aria-hidden="true">D<span>↗</span></span><span>Doc to Context<small>文档备料台</small></span></a><span class="privacy"><span aria-hidden="true">●</span> 文档留在此浏览器</span></header>
+    <main>
+      <section class="hero"><div class="eyebrow">给 AI 一份更好用的材料</div><h1>文档太长？<br>先整理，再交给 AI。</h1><p>把 PDF、TXT、Markdown 拆成大小合适、带文件名与页码的材料包。<br class="desktop-break">复制到你常用的 AI，让回答有原文可查。</p><div class="hero-tags"><span>无需账号</span><span>无需 API Key</span><span>本地处理</span></div><div class="hero-decoration" aria-hidden="true"><div class="paper paper-back"></div><div class="paper"><span>YOUR DOCUMENT</span><i></i><i></i><i class="short"></i><b>[来源 · 第 1 页]</b></div><div class="packet-badge">整理好了 ↗</div></div></section>
+      <div class="workflow"><span><b>01</b> 放入文档</span><i></i><span><b>02</b> 检查文字</span><i></i><span><b>03</b> 复制材料</span></div>
+      <div id="notice" role="status" aria-live="polite" class="notice" hidden></div>
+      <section class="workspace-grid">
+        <div class="input-column">
+          <section class="panel import-panel" aria-labelledby="import-title"><div class="section-heading"><div><span class="step">01 / INPUT</span><h2 id="import-title">放入你的文档</h2></div><button id="clear" class="text-button" disabled>清空</button></div>
+            <div id="dropzone" class="dropzone"><div class="upload-icon" aria-hidden="true">↥</div><h3>拖入文件，从这里开始</h3><p>PDF · TXT · MD</p><label for="file-input" class="button primary">选择本地文件</label><input id="file-input" type="file" accept=".pdf,.txt,.md,text/plain,text/markdown,application/pdf" multiple class="visually-hidden"/><small>最多 8 份 · 单份 20 MB · 共 40 MB / 100 页</small></div>
+            <div class="sample-row"><span>先试一下？</span><button id="sample-text" class="sample-button">两页文字 PDF <span aria-hidden="true">↗</span></button><button id="sample-scan" class="sample-button">无文字 PDF <span aria-hidden="true">↗</span></button></div>
+            <div id="progress" class="processing" hidden><span class="spinner" aria-hidden="true"></span><span id="progress-text"></span></div>
+            <ul id="file-list" class="file-list" aria-label="已导入文件"></ul>
+          </section>
+          <section class="panel settings-panel" aria-labelledby="settings-title"><div class="section-heading"><div><span class="step">03 / PREPARE</span><h2 id="settings-title">你想让 AI 做什么？</h2></div></div>
+            <fieldset class="mode-options"><legend class="visually-hidden">任务类型</legend><label><input type="radio" name="mode" value="summary" checked><span>提炼摘要</span></label><label><input type="radio" name="mode" value="question"><span>回答问题</span></label><label><input type="radio" name="mode" value="compare"><span>比较文件</span></label></fieldset>
+            <div id="question-area" hidden><label for="question">想问的问题</label><textarea id="question" maxlength="800" rows="3" placeholder="例如：项目目标是什么？有哪些待确认的问题？"></textarea><small>最多 400 个字符；仅根据提供的材料回答。</small></div>
+            <label class="field-label" for="budget">每包最多多少字符？</label><div class="budget-row"><input id="budget" type="number" min="500" max="20000" step="100" value="6000"><span>字符 / 包</span></div><p class="field-help">包含提示词与来源。字符数 ≠ token 数；遇到 AI 长度限制时调小这个数。</p>
+            <button id="generate" class="button primary wide" disabled>整理成材料包 <span aria-hidden="true">→</span></button>
+          </section>
+        </div>
+        <section class="panel preview-panel" aria-labelledby="preview-title"><div class="section-heading"><div><span class="step">02 / REVIEW</span><h2 id="preview-title">先看一眼提取结果</h2></div><span id="preview-count" class="small-chip">等待文档</span></div><p class="panel-description">复杂排版、表格的阅读顺序可能变化。先核对，再交给 AI。</p><div id="preview-empty" class="empty-state"><div class="empty-icon" aria-hidden="true">Aa</div><h3>原文会出现在这里</h3><p>选一份文件，检查文字是否完整。<br>PDF 页码指文件中的第几页，并非纸面印刷页码。</p></div><div id="preview-content" hidden><label class="visually-hidden" for="preview-file">预览文件</label><select id="preview-file"></select><div class="page-navigation"><button id="previous-page" class="square-button" aria-label="上一页">←</button><span id="page-label"></span><button id="next-page" class="square-button" aria-label="下一页">→</button></div><div id="page-warning" class="inline-warning" hidden></div><pre id="page-text" class="page-text" tabindex="0" aria-label="提取的页面文字"></pre><p class="preview-footnote">预览显示完整提取文字；所选页码范围在左侧文件卡片中设置。</p></div></section>
+      </section>
+      <section id="results" class="panel result-panel" aria-labelledby="result-title"><div class="section-heading"><div><span class="step">READY FOR YOUR AI</span><h2 id="result-title">可以带走的材料</h2></div><button id="download-all" class="button secondary" hidden>下载全部 .md ↓</button></div><div id="result-empty" class="result-empty"><span aria-hidden="true">✦</span><p>准备好后，点击「整理成材料包」。<br><small>每包自带任务说明和来源标注，复制即可用。</small></p></div><div id="result-summary" class="result-summary" hidden></div><div id="packet-list" class="packet-list"></div><div id="next-step" class="next-step" hidden><b>接下来怎么用？</b><p>1. 复制一包 → 2. 粘贴到你常用的 AI → 3. 核对它引用的原文。多包可逐份分析，再请 AI 汇总已收到的结果；跨包对比需你确认相关材料都已提供。</p><small>本工具整理材料，不生成 AI 回答。复制给外部 AI 时，文档内容将由该服务处理，请按自己的隐私需要选择。</small></div></section>
+      <aside class="honest-notes"><div><b>有来源，更容易核对</b><p>每段保留文件标识和 PDF 物理页码。AI 仍可能引用错误，重要结论请回到原文检查。</p></div><div><b>不把扫描图当成文字</b><p>这里不含 OCR。未提取到文字的页面可能是扫描件、空白页或字体编码问题。</p></div><div><b>你的材料，由你带走</b><p>不上传文档，不调用模型，不保存到浏览器存储。刷新页面后，导入内容会清空。</p></div></aside>
+    </main>
+    <footer><span>Doc to Context <i>·</i> Made by Huazhe Cheng</span><a href="https://github.com/chzFRA/doc-to-context" target="_blank" rel="noopener noreferrer">开源代码 ↗</a></footer>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 4 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R >> >> /Contents 7 0 R >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Length 490 >>
+stream
+BT /F1 16 Tf 52 740 Td 24 TL
+(COMMUNITY GARDEN - PROJECT BRIEF) Tj
+T* () Tj
+T* (This is a fictional sample created for Doc to Context.) Tj
+T* (Goal: grow vegetables and share weekly gardening lessons.) Tj
+T* (Start date: 12 April 2027.) Tj
+T* (Participants: 18 households.) Tj
+T* (Available space: 120 square metres.) Tj
+T* (Planned budget: 2,400 dollars.) Tj
+T* () Tj
+T* (The planning group has not selected a supplier yet.) Tj
+T* (The final water-access agreement is still pending.) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Length 560 >>
+stream
+BT /F1 16 Tf 52 740 Td 24 TL
+(COMMUNITY GARDEN - MEETING NOTES) Tj
+T* () Tj
+T* (Meeting date: 3 March 2027.) Tj
+T* (Confirmed volunteers: 11 people.) Tj
+T* (Raised beds: 8 beds planned for the first stage.) Tj
+T* (The first stage will use 80 square metres.) Tj
+T* (The remaining area is reserved for paths and storage.) Tj
+T* () Tj
+T* (Action: Alex will compare three supplier quotations.) Tj
+T* (Action: Mei will confirm water access by 20 March.) Tj
+T* (A final cost has not been approved.) Tj
+T* (Do not treat the planned budget as an actual expense.) Tj
+ET
+endstream
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000247 00000 n 
+0000000373 00000 n 
+0000000443 00000 n 
+0000000984 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+1595
+%%EOF

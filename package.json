@@ -1,0 +1,27 @@
+{
+  "name": "doc-to-context",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Prepare cited document packets for your AI, locally in your browser.",
+  "license": "MIT",
+  "author": "Huazhe Cheng",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "predev": "node scripts/prepare-assets.js",
+    "prebuild": "node scripts/prepare-assets.js",
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "samples": "node scripts/create-samples.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "pdfjs-dist": "6.3.289"
+  },
+  "devDependencies": {
+    "vite": "7.3.6"
+  }
+}
